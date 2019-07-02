@@ -17,7 +17,7 @@ type Checkbook struct {
 func NewInMemoryCheckBook(raw string) *Checkbook {
 	cb := &Checkbook{
 		transactions: devto.TransactionCollection{},
-		categoryMap: make(devto.TransactionCollectionMap),
+		categoryMap:  make(devto.TransactionCollectionMap),
 	}
 
 	cb.parseRaw(raw)
@@ -60,25 +60,25 @@ func (cb *Checkbook) FullReport() string {
 		cost += t.Amount
 		report.WriteString(fmt.Sprintf(
 			"[%d] -> Check Number: %d, Category: %s, Amount: %.2f, Remaining Balance: %.2f\n",
-			i + 1,
+			i+1,
 			t.CheckNumber,
 			t.Category,
 			t.Amount,
 			t.RemainingBalance,
-			))
+		))
 	}
 
 	// total costs
 	report.WriteString(fmt.Sprintf(
 		"Total Costs: %.2f\n",
 		cost,
-		))
+	))
 
 	// average costs
 	report.WriteString(fmt.Sprintf(
 		"Average Cost: %.2f",
-		cost / float64(len(cb.transactions)),
-		))
+		cost/float64(len(cb.transactions)),
+	))
 
 	return report.String()
 }

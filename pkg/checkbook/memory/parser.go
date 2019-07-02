@@ -1,12 +1,11 @@
 package memory
 
 import (
+	devto "github.com/Dak425/dev-to-challenge-4-go"
 	"log"
 	"regexp"
 	"strconv"
 	"strings"
-
-	"github.com/Dak425/dev-to-challenge-4-go"
 )
 
 type parser struct {
@@ -64,7 +63,7 @@ func (p parser) transactionFromLine(line string) devto.Transaction {
 
 	return devto.Transaction{
 		CheckNumber: checkNumber,
-		Category: parts[1],
-		Amount: amount,
+		Category:    parts[1],
+		Amount:      amount,
 	}
 }
