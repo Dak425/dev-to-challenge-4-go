@@ -33,7 +33,7 @@ func (p parser) sanitizeLine(line string) string {
 }
 
 func (p parser) initialBalanceFromLines(lines []string) (float64, []string) {
-	initialBalance, err := strconv.ParseFloat(lines[0], 64)
+	initialBalance, err := strconv.ParseFloat(p.sanitizeLine(lines[0]), 64)
 
 	if err != nil {
 		log.Fatalf("unable to load initial balance from lines: %v", err)
